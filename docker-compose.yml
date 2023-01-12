@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  headless:
+    image: chromedp/headless-shell:latest
+    container_name: headless
+    tty: true
+    networks:
+      - chromeheadless
+    restart: 'always'
+    ports:
+      - 9222:9222
+    environment:
+      shm-size: 2G
+
+  spider:
+    image: wdlyt/phpcli:v7.4.30
+    container_name: spider
+    tty: true
+    restart: 'always'
+    working_dir: /app
+    links:
+      - headless
+    volumes:
+      - ./:/app
+    privileged: true
+    networks:
+      - chromeheadless
+    entrypoint: sh
+    command: '-c "sleep 1d"'
+
+networks:
+  chromeheadless:

@@ -1,0 +1,5 @@
+*.lock
+/.idea
+/.runtime
+/vendor
+.env

@@ -1,0 +1,8 @@
+{
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "chrome-php/chrome": "*",
+        "guzzlehttp/guzzle": "~6.0"
+    }
+}
